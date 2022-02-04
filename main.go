@@ -36,7 +36,7 @@ func index() http.Handler {
 			Slogan       string
 		}{
 			Title:        template.HTML("Business &verbar; Landing"),
-			BusinessName: "Congratulations, you've just built a Go app,",
+			BusinessName: "Congratulations, you've just build a Go app,",
 			Slogan:       "That's it!",
 		}
 		err := templates.ExecuteTemplate(w, "base", &b)
