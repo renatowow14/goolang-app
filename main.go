@@ -29,6 +29,10 @@ func logging(next http.Handler) http.Handler {
 
 // index is the handler responsible for rending the index page for the site.
 func index() http.Handler {
+	hostname,err := os.Hostname()
+	if err == nil {
+		fmt.Println("hostname:",hostname)
+	}
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		b := struct {
 			Title        template.HTML
@@ -36,7 +40,7 @@ func index() http.Handler {
 			Slogan       string
 		}{
 			Title:        template.HTML("Business &verbar; Landing"),
-			BusinessName: "Congratulations, you've just build a Go app,",
+			BusinessName: "Congratulations, you've just build a Go app-go@" + hostname,  
 			Slogan:       "That's it!",
 		}
 		err := templates.ExecuteTemplate(w, "base", &b)
