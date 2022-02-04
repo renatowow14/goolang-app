@@ -6,5 +6,5 @@ echo '=============================================================='
 
 set -x
 cd /tmp/src/
-go build goserver.go
+go build -o goserver main.go
 mv -f ./goserver /opt/app-root/src/goserver
